@@ -1,296 +1,37 @@
 <!doctype html>
 <html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="color-scheme" content="light dark">
-  <meta name="theme-color" content="#efeee9">
-  <link rel="icon" href="data:,">
-  <title>张国明｜新媒体与内容运营作品集</title>
-  <style>
-    :root{
-      color-scheme:light dark;
-      --paper:#efeee9;--paper-deep:#e3e1da;--surface:#f8f7f3;--ink:#171715;--muted:#66635d;
-      --line:#c7c3ba;--accent:#aa382b;--accent-soft:#e8d2cc;--night:#1c1b19;--night-2:#24221f;
-      --night-ink:#f2efe8;--night-muted:#aaa59b;--shadow:0 22px 60px rgba(29,27,23,.12);
-      --serif:"Songti SC","STSong","SimSun",serif;--sans:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",sans-serif;--latin:"Avenir Next","Helvetica Neue",sans-serif;
-    }
-    @media(prefers-color-scheme:dark){:root{
-      --paper:#151513;--paper-deep:#1d1d1a;--surface:#20201c;--ink:#efebe3;--muted:#aaa69e;
-      --line:#3c3a35;--accent:#d46d5d;--accent-soft:#492c27;--night:#0c0c0b;--night-2:#151513;
-      --night-ink:#f4f0e8;--night-muted:#aca69c;--shadow:0 22px 60px rgba(0,0,0,.34)
-    }}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:24px}
-    body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.75 var(--sans);overflow-x:hidden}
-    body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.026;background:url('p01-09a7221e.jpg') center/900px;z-index:100}
-    button,a{font:inherit;color:inherit}a{text-underline-offset:5px}img{display:block;max-width:100%}
-    ::selection{background:var(--accent);color:#fff}
-    .skip{position:fixed;left:12px;top:12px;z-index:300;padding:10px 14px;background:var(--ink);color:var(--paper);transform:translateY(-150%)}.skip:focus{transform:none}
-    .progress{position:fixed;left:0;top:0;width:3px;height:0;background:var(--accent);z-index:210}
-    .rail{position:fixed;inset:0 auto 0 0;width:116px;border-right:1px solid var(--line);background:color-mix(in srgb,var(--paper) 94%,transparent);backdrop-filter:blur(12px);z-index:200;display:flex;flex-direction:column;justify-content:space-between;padding:24px 15px}
-    .rail-mark{font:600 10px/1.25 var(--latin);letter-spacing:.19em;writing-mode:vertical-rl;align-self:center}
-    .rail nav{display:flex;flex-direction:column;gap:4px}.rail a{text-decoration:none;display:grid;grid-template-columns:22px 1fr;gap:6px;align-items:center;padding:7px 3px;color:var(--muted);font-size:10px;line-height:1.2}.rail a::before{content:attr(data-no);font:500 9px/1 var(--latin);color:var(--muted)}.rail a.active{color:var(--ink);font-weight:600}.rail a.active::before{color:var(--accent)}
-    .rail-year{font:500 9px/1 var(--latin);letter-spacing:.15em;color:var(--muted);writing-mode:vertical-rl;align-self:center}
-    main{margin-left:116px}.chapter{position:relative;min-height:100svh;padding:clamp(58px,7vw,112px) clamp(24px,7vw,118px);border-bottom:1px solid var(--line)}
-    .chapter-no{position:absolute;right:clamp(22px,4vw,60px);top:28px;color:var(--muted);font:500 10px/1 var(--latin);letter-spacing:.18em}
-    .eyebrow{margin:0 0 23px;font:600 10px/1.4 var(--latin);letter-spacing:.2em;text-transform:uppercase;color:var(--accent)}
-    .display{font:500 clamp(48px,8.4vw,132px)/.93 var(--serif);letter-spacing:-.065em;margin:0}.headline{font:500 clamp(35px,5.1vw,72px)/1.1 var(--serif);letter-spacing:-.055em;margin:0}.subhead{font:500 clamp(24px,3vw,40px)/1.25 var(--serif);letter-spacing:-.035em;margin:0}
-    .lede{max-width:750px;font-size:clamp(16px,1.45vw,21px);line-height:1.85;color:var(--muted);margin:24px 0 0}
-    .rule{height:1px;background:var(--line);margin:42px 0}.label{font:600 10px/1 var(--latin);letter-spacing:.15em;color:var(--muted);text-transform:uppercase}
-    .pill-row{display:flex;flex-wrap:wrap;gap:8px}.pill{border:1px solid var(--line);padding:6px 11px;border-radius:99px;font-size:11px;color:var(--muted)}
-    /* cover */
-    .cover{display:grid;grid-template-columns:1.35fr .65fr;align-items:end;background:linear-gradient(90deg,color-mix(in srgb,var(--paper) 84%,transparent),color-mix(in srgb,var(--paper) 62%,transparent)),url('p01-09a7221e.jpg') center/cover;overflow:hidden}
-    .cover-copy{align-self:center}.cover .display{max-width:1100px}.cover .display small{display:block;font:600 .12em/1.4 var(--latin);letter-spacing:.25em;margin-bottom:28px;color:var(--muted)}.cover .display em{font-style:normal;color:var(--accent)}
-    .cover-card{border-left:1px solid var(--line);padding:8px 0 8px 30px;margin-bottom:20px}.cover-card strong{display:block;font:500 26px/1.35 var(--serif)}.cover-card span{display:block;font-size:12px;color:var(--muted);margin-top:4px}.cover-foot{position:absolute;left:clamp(24px,7vw,118px);right:clamp(24px,7vw,118px);bottom:27px;border-top:1px solid var(--line);padding-top:12px;display:flex;justify-content:space-between;font:500 9px/1.3 var(--latin);letter-spacing:.16em;color:var(--muted)}
-    /* about */
-    .about-layout{display:grid;grid-template-columns:.72fr 1.28fr;gap:clamp(40px,8vw,130px);align-items:start}.monogram{position:sticky;top:30px;aspect-ratio:4/5;background:var(--night);color:var(--night-ink);padding:24px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}.monogram::after{content:"ZG";position:absolute;right:-18px;bottom:52px;font:600 clamp(110px,18vw,260px)/.75 var(--latin);letter-spacing:-.1em;opacity:.13}.monogram span{font:500 10px/1.6 var(--latin);letter-spacing:.2em;z-index:1}.about-quote{font:400 clamp(25px,3.2vw,46px)/1.52 var(--serif);margin:0 0 46px}.profile{margin:0}.profile div{display:grid;grid-template-columns:145px 1fr;gap:20px;border-top:1px solid var(--line);padding:17px 0}.profile dt{font-size:11px;color:var(--muted)}.profile dd{margin:0;font-size:14px}.profile a{text-decoration-thickness:1px}
-    /* experience */
-    .experience-head{display:grid;grid-template-columns:1fr .85fr;gap:8vw;align-items:end}.experience-note{margin:0;color:var(--muted);font-size:14px}.timeline{margin-top:66px;border-top:1px solid var(--line)}.timeline article{display:grid;grid-template-columns:130px .72fr 1.28fr;gap:30px;padding:30px 0;border-bottom:1px solid var(--line)}.timeline .index{font:500 12px/1 var(--latin);color:var(--accent)}.timeline h3{font:500 clamp(24px,2.5vw,34px)/1.3 var(--serif);margin:0}.timeline h3 small{display:block;font:400 12px/1.4 var(--sans);color:var(--muted);margin-top:8px}.timeline p{margin:0;color:var(--muted);font-size:14px}.timeline .outcomes{margin-top:13px;display:flex;gap:18px;flex-wrap:wrap}.timeline .outcomes b{font:600 18px/1 var(--latin);color:var(--ink)}.timeline .outcomes span{display:block;font-size:10px;color:var(--muted);margin-top:5px}
-    /* platform */
-    .platform{background:var(--night);color:var(--night-ink);--line:#46423c;--muted:var(--night-muted);--ink:var(--night-ink);--surface:var(--night-2)}
-    .platform-head{display:grid;grid-template-columns:1fr .9fr;gap:7vw;align-items:end}.platform-tabs{display:grid;grid-template-columns:repeat(4,1fr);margin:54px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.platform-tabs button{border:0;border-right:1px solid var(--line);background:transparent;color:var(--muted);padding:18px 12px;text-align:left;cursor:pointer}.platform-tabs button:last-child{border-right:0}.platform-tabs button strong{display:block;font:500 16px/1.4 var(--serif);color:var(--ink)}.platform-tabs button span{font:500 9px/1 var(--latin);letter-spacing:.14em}.platform-tabs button[aria-selected="true"]{background:var(--night-ink);color:#675f56}.platform-tabs button[aria-selected="true"] strong{color:#171715}.platform-panel{display:none;padding-top:46px}.platform-panel.active{display:block}.case-grid{display:grid;grid-template-columns:.82fr 1.18fr;gap:clamp(32px,7vw,100px);align-items:start}.case-intro h3{font:500 clamp(31px,4vw,54px)/1.18 var(--serif);letter-spacing:-.04em;margin:0 0 22px}.case-intro p{color:var(--muted);margin:0}.stats{display:grid;grid-template-columns:repeat(2,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}.stat{padding:20px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);min-height:130px;display:flex;flex-direction:column;justify-content:space-between}.stat b{font:500 clamp(28px,3.5vw,48px)/1 var(--latin);letter-spacing:-.06em;color:var(--ink)}.stat span{font-size:11px;color:var(--muted)}.case-gallery{display:grid;grid-template-columns:1.15fr .85fr;gap:10px;margin-top:38px}.case-gallery figure{margin:0;min-height:390px;overflow:hidden;background:var(--night-2);position:relative}.case-gallery img{width:100%;height:100%;object-fit:cover;object-position:top;cursor:zoom-in}.case-gallery .contain img{object-fit:contain;background:#ecebe6}.case-gallery figcaption,.shoot-grid figcaption{position:absolute;left:10px;bottom:10px;padding:6px 9px;background:rgba(18,17,15,.84);color:#f4f0e8;font-size:10px}.carousel-grid{align-items:stretch}.case-carousel{position:relative;min-width:0;background:var(--night-2);border:1px solid var(--line);padding-bottom:52px;touch-action:pan-y;overscroll-behavior-x:contain;user-select:none;-webkit-user-select:none}.case-carousel.is-swiping{cursor:grabbing}.case-carousel figure{display:none;height:470px;min-height:0}.case-carousel figure.active{display:block}.case-carousel img{object-fit:contain;background:#ecebe6;-webkit-user-drag:none}.carousel-bar{position:absolute;inset:auto 0 0;display:grid;grid-template-columns:1fr auto;align-items:center;gap:14px;height:52px;padding:0 12px 0 16px;background:var(--night-2);border-top:1px solid var(--line)}.carousel-meta{display:flex;align-items:center;gap:10px;min-width:0}.carousel-title{font:500 11px/1.3 var(--serif);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.carousel-count{font:500 9px/1 var(--latin);letter-spacing:.1em;color:var(--muted);white-space:nowrap}.carousel-actions{display:flex;gap:6px}.carousel-actions button{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer;line-height:1;transition:background .18s ease,color .18s ease}.carousel-actions button:hover,.carousel-actions button:focus-visible{background:var(--night-ink);color:#171715;outline:none}.video-gallery figure{min-height:520px}.video-gallery img{object-fit:contain;background:#181816}.pending{border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;min-height:390px}.pending-main{padding:clamp(28px,5vw,70px);display:flex;flex-direction:column;justify-content:space-between}.pending-main h3{font:500 clamp(34px,5vw,68px)/1.08 var(--serif);margin:0}.pending-side{border-left:1px solid var(--line);padding:32px}.pending-side h4{font:500 20px var(--serif);margin:0 0 20px}.pending-side ul{margin:0;padding:0;list-style:none}.pending-side li{padding:12px 0;border-top:1px solid var(--line);font-size:12px;color:var(--muted)}
-    /* copywriting */
-    .copy-head{display:grid;grid-template-columns:1.05fr .95fr;gap:7vw;align-items:end}.copy-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:58px}.copy-card{background:var(--surface);padding:clamp(24px,3vw,42px);min-height:450px;display:flex;flex-direction:column}.copy-card .num{font:500 11px/1 var(--latin);color:var(--accent)}.copy-card h3{font:500 clamp(25px,2.7vw,38px)/1.25 var(--serif);margin:30px 0 18px}.copy-card p{font-size:13px;color:var(--muted);margin:0}.copy-card ol{list-style:none;padding:0;margin:auto 0 0;counter-reset:cp}.copy-card li{counter-increment:cp;border-top:1px solid var(--line);padding:12px 0;font-size:12px}.copy-card li::before{content:counter(cp,decimal-leading-zero);font:500 9px var(--latin);color:var(--accent);margin-right:10px}.copy-card .status{margin-top:18px;font-size:10px;color:var(--muted);display:flex;align-items:center;gap:8px}.copy-card .status::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
-    /* design */
-    .design-head{display:grid;grid-template-columns:1fr .8fr;gap:8vw;align-items:end}.design-wall{display:grid;grid-template-columns:1.18fr .82fr .82fr;grid-template-rows:repeat(2,310px);gap:10px;margin-top:54px}.design-wall figure{margin:0;overflow:hidden;position:relative;background:var(--paper-deep)}.design-wall figure:first-child{grid-row:1/3}.design-wall img{width:100%;height:100%;object-fit:cover;object-position:top;cursor:zoom-in}.design-wall figure:first-child img{object-fit:contain;background:#ecebe6}.design-wall figcaption{position:absolute;inset:auto 10px 10px 10px;padding:8px 10px;background:color-mix(in srgb,var(--paper) 91%,transparent);font-size:10px;color:var(--muted)}.design-skills{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);margin-top:40px}.design-skills article{padding:20px 18px 8px 0;border-right:1px solid var(--line)}.design-skills article+article{padding-left:18px}.design-skills b{font:500 17px var(--serif)}.design-skills p{font-size:11px;color:var(--muted);margin:8px 0}
-    /* independent subdivision pages */
-    .subpage{min-height:100svh;display:flex;flex-direction:column;justify-content:center}
-    .subpage-nav{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 40px}.subpage-nav a{text-decoration:none;border:1px solid var(--line);padding:6px 10px;font:500 9px/1.2 var(--latin);letter-spacing:.08em;color:var(--muted)}.subpage-nav a[aria-current="page"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
-    .platform .subpage-nav a[aria-current="page"]{background:var(--night-ink);border-color:var(--night-ink);color:#171715}
-    .platform-page+.platform-page{border-top:1px solid var(--line)}
-    .platform-page .case-grid{margin-top:52px}.platform-page .pending{margin-top:52px}
-    .page-kicker{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:end}.page-kicker .chapter-title{font:500 13px/1 var(--serif);color:var(--muted);margin:0 0 16px}.page-count{font:500 clamp(42px,7vw,96px)/.8 var(--latin);letter-spacing:-.08em;color:color-mix(in srgb,var(--ink) 18%,transparent)}
-    .framework-note{margin-top:28px;border-top:1px solid var(--line);padding-top:14px;display:grid;grid-template-columns:120px 1fr;gap:20px;color:var(--muted);font-size:12px}.framework-note strong{font:600 9px/1.5 var(--latin);letter-spacing:.13em;color:var(--accent)}
-    .copy-page:nth-of-type(even),.design-page:nth-of-type(even){background:var(--paper-deep)}
-    .copy-layout{display:grid;grid-template-columns:.76fr 1.24fr;gap:clamp(38px,8vw,120px);align-items:start;margin-top:50px}.copy-steps{border-top:1px solid var(--line)}.copy-steps article{display:grid;grid-template-columns:54px 1fr;gap:18px;padding:18px 0;border-bottom:1px solid var(--line)}.copy-steps span{font:500 10px/1.5 var(--latin);color:var(--accent)}.copy-steps h3{font:500 18px/1.45 var(--serif);margin:0 0 5px}.copy-steps p{font-size:12px;color:var(--muted);margin:0}.specimen{min-height:430px;border:1px solid var(--line);background:var(--surface);padding:clamp(25px,4vw,54px);display:flex;flex-direction:column;justify-content:space-between}.specimen .ghost-lines{display:grid;gap:12px}.specimen .ghost-lines i{height:1px;background:var(--line);display:block}.specimen .ghost-lines i:nth-child(2){width:86%}.specimen .ghost-lines i:nth-child(3){width:72%}.specimen h3{font:500 clamp(27px,3.2vw,44px)/1.2 var(--serif);margin:0}.specimen p{max-width:520px;color:var(--muted);font-size:13px;margin:18px 0 0}.script-carousel{background:var(--surface);border-color:var(--line);padding-bottom:54px}.script-carousel figure{height:560px;min-height:0;margin:0;position:relative;overflow:hidden;background:#fff}.script-carousel img{width:100%;height:100%;object-fit:contain;background:#fff;cursor:zoom-in}.script-carousel figcaption{position:absolute;left:10px;bottom:10px;padding:6px 9px;background:rgba(18,17,15,.84);color:#f4f0e8;font-size:10px}.script-carousel .carousel-bar{height:54px;background:var(--surface)}.script-carousel .carousel-actions button:hover,.script-carousel .carousel-actions button:focus-visible{background:var(--ink);color:var(--paper)}
-    .academic-carousel{background:var(--surface);border-color:var(--line);padding-bottom:54px}.academic-carousel figure{height:560px;min-height:0;margin:0;position:relative;overflow:hidden;background:#edf0f2}.academic-carousel img{width:100%;height:100%;object-fit:contain;background:#edf0f2;cursor:zoom-in}.academic-carousel figcaption{position:absolute;left:10px;bottom:10px;padding:6px 9px;background:rgba(18,17,15,.84);color:#f4f0e8;font-size:10px}.academic-carousel .carousel-bar{height:54px;background:var(--surface)}.academic-carousel .carousel-actions button:hover,.academic-carousel .carousel-actions button:focus-visible{background:var(--ink);color:var(--paper)}
-    .design-page .page-kicker{margin-bottom:48px}.design-feature{display:grid;grid-template-columns:.75fr 1.25fr;gap:clamp(30px,7vw,100px);align-items:start}.design-feature.reverse{grid-template-columns:1.25fr .75fr}.design-copy h3{font:500 clamp(28px,3.5vw,48px)/1.2 var(--serif);margin:0 0 22px}.design-copy p{color:var(--muted);font-size:14px}.design-copy ul{list-style:none;padding:0;margin:30px 0 0;border-top:1px solid var(--line)}.design-copy li{padding:12px 0;border-bottom:1px solid var(--line);font-size:12px}.design-copy li::before{content:"—";color:var(--accent);margin-right:10px}.design-showcase{display:grid;grid-template-columns:1fr 1fr;gap:10px}.design-showcase.one{grid-template-columns:1fr}.design-showcase figure{margin:0;position:relative;background:#ecebe6;min-height:500px;overflow:hidden}.design-showcase img{width:100%;height:100%;object-fit:cover;object-position:top;cursor:zoom-in}.design-showcase .contain img{object-fit:contain}.design-showcase figcaption{position:absolute;left:10px;bottom:10px;padding:6px 9px;background:rgba(18,17,15,.84);color:#f4f0e8;font-size:10px}.editorial-showcase{grid-template-columns:repeat(3,1fr)}.editorial-showcase figure{height:620px;min-height:0;overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--accent) var(--paper-deep)}.editorial-showcase img{width:100%;height:auto;min-height:100%;object-fit:cover;object-position:top}.editorial-showcase figcaption{position:sticky;display:table;margin:-38px 10px 10px;left:auto;bottom:10px;z-index:2}.design-placeholder{min-height:500px;border:1px solid var(--line);background:var(--surface);display:grid;place-items:center;text-align:center;padding:30px}.design-placeholder strong{display:block;font:500 clamp(27px,3vw,42px)/1.3 var(--serif)}.design-placeholder span{display:block;margin-top:10px;color:var(--muted);font-size:12px}
-    /* photography */
-    .shooting{background:var(--paper-deep)}.shoot-head{display:grid;grid-template-columns:.75fr 1.25fr;gap:8vw;align-items:end}.shoot-grid{display:grid;grid-template-columns:.9fr 1.1fr .9fr;gap:10px;margin-top:52px}.shoot-grid figure{margin:0;height:620px;overflow:hidden;position:relative;background:var(--paper)}.shoot-grid figure:nth-child(2){margin-top:58px;height:562px}.shoot-grid img{width:100%;height:100%;object-fit:cover;cursor:zoom-in}.shoot-note{max-width:590px;margin:32px 0 0 auto;color:var(--muted);font-size:13px}
-    /* ai */
-    .ai{background:var(--night);color:var(--night-ink);--line:#46423c;--muted:var(--night-muted);--ink:var(--night-ink);--surface:var(--night-2)}.ai-head{display:grid;grid-template-columns:1.1fr .9fr;gap:7vw;align-items:end}.prototype{display:grid;grid-template-columns:1.25fr .75fr;gap:12px;margin-top:54px}.prototype figure{margin:0;background:#efeee9;padding:14px;min-height:520px}.prototype img{width:100%;height:100%;object-fit:contain;cursor:zoom-in}.ai-flow{display:flex;flex-direction:column;border-top:1px solid var(--line)}.ai-flow article{padding:22px 0;border-bottom:1px solid var(--line);display:grid;grid-template-columns:42px 1fr;gap:14px}.ai-flow span{font:500 10px var(--latin);color:var(--accent)}.ai-flow h3{font:500 17px var(--serif);margin:0 0 5px}.ai-flow p{font-size:11px;color:var(--muted);margin:0}.contact-strip{margin-top:78px;border-top:1px solid var(--line);padding-top:40px;display:grid;grid-template-columns:1fr auto;gap:40px;align-items:end}.contact-strip h2{font:500 clamp(34px,5vw,72px)/1.15 var(--serif);letter-spacing:-.05em;margin:0}.contact-links{display:flex;flex-direction:column;align-items:flex-end;font-size:13px;gap:6px}.contact-links a{text-decoration-thickness:1px}
-    /* lightbox */
-    .lightbox{position:fixed;inset:0;background:rgba(10,10,9,.95);z-index:500;display:none;align-items:center;justify-content:center;padding:58px 20px 20px}.lightbox.open{display:flex}.lightbox img{max-width:min(1100px,94vw);max-height:85vh;object-fit:contain}.lightbox button{position:absolute;right:20px;top:16px;border:0;background:none;color:white;font-size:34px;cursor:pointer}.lightbox p{position:absolute;left:20px;top:20px;color:#aaa;font:500 9px var(--latin);letter-spacing:.15em;margin:0}
-    @media(max-width:940px){
-      .rail{inset:auto 0 0 0;width:auto;height:58px;border-right:0;border-top:1px solid var(--line);padding:0 12px;flex-direction:row;align-items:center}.rail-mark,.rail-year{writing-mode:horizontal-tb}.rail nav{flex:1;flex-direction:row;justify-content:center}.rail a{display:block;width:23px;height:23px;padding:0;font-size:0;border:1px solid transparent;border-radius:50%}.rail a::before{display:block;text-align:center;line-height:21px}.rail a.active{border-color:var(--accent)}main{margin-left:0;padding-bottom:58px}.chapter{min-height:auto;padding:70px 24px 82px}.cover{min-height:calc(100svh - 58px);grid-template-columns:1fr;align-content:center}.cover-card{display:none}.cover-foot{left:24px;right:24px}.about-layout,.experience-head,.platform-head,.copy-head,.design-head,.shoot-head,.ai-head,.case-grid,.prototype,.copy-layout,.design-feature,.design-feature.reverse{grid-template-columns:1fr}.monogram{position:relative;aspect-ratio:16/9}.subpage{min-height:auto}.page-count{display:none}.design-showcase figure,.design-placeholder{min-height:420px}.editorial-showcase{grid-template-columns:repeat(3,1fr)}.editorial-showcase figure{height:520px;min-height:0}.timeline article{grid-template-columns:70px .8fr 1.2fr}.platform-tabs{grid-template-columns:repeat(2,1fr)}.platform-tabs button:nth-child(2){border-right:0}.platform-tabs button:nth-child(-n+2){border-bottom:1px solid var(--line)}.copy-grid{grid-template-columns:1fr}.copy-card{min-height:360px}.design-wall{grid-template-columns:1fr 1fr;grid-template-rows:420px 250px 250px}.design-wall figure:first-child{grid-column:1/3;grid-row:auto}.design-skills{grid-template-columns:repeat(2,1fr)}.design-skills article:nth-child(2){border-right:0}.shoot-grid{grid-template-columns:1fr 1fr}.shoot-grid figure{height:520px}.shoot-grid figure:nth-child(2){margin-top:46px;height:474px}.shoot-grid figure:nth-child(3){grid-column:1/3;height:460px}.contact-strip{grid-template-columns:1fr}.contact-links{align-items:flex-start}
-    }
-    @media(max-width:600px){
-      body{font-size:14px;line-height:1.68}.rail{height:52px;padding:0 9px}.rail-mark,.rail-year{display:none}.rail nav{justify-content:space-between}.rail a{width:30px;height:30px}.rail a::before{line-height:28px}main{padding-bottom:52px}.chapter{padding:54px 18px 66px}.chapter-no{right:18px;top:18px}.eyebrow{margin-bottom:15px;font-size:9px}.headline{font-size:clamp(30px,9.8vw,39px);line-height:1.14;letter-spacing:-.045em}.subhead{font-size:24px}.cover{min-height:calc(100svh - 52px);padding-top:38px;padding-bottom:72px}.cover .display{font-size:clamp(40px,12.8vw,52px);line-height:1.02;letter-spacing:-.055em}.cover .display small{font-size:.105em;margin-bottom:20px;letter-spacing:.2em}.cover-foot{left:18px;right:18px;bottom:18px;font-size:7px;line-height:1.55;letter-spacing:.11em;gap:12px}.cover-foot span:first-child{max-width:72%}.lede{font-size:14px;line-height:1.72;margin-top:16px}.about-quote{font-size:22px;line-height:1.55;margin-bottom:30px}.profile div{grid-template-columns:86px 1fr;gap:13px;padding:14px 0}.monogram{aspect-ratio:4/3}.experience-note{font-size:13px}.timeline{margin-top:40px}.timeline article{grid-template-columns:30px 1fr;gap:15px;padding:22px 0}.timeline article>div:last-child{grid-column:2}.timeline h3{font-size:21px}.timeline p{font-size:12px}.timeline .outcomes{gap:14px}.timeline .outcomes b{font-size:16px}.stats{grid-template-columns:1fr 1fr}.stat{min-height:102px;padding:13px}.stat b{font-size:27px}.case-grid{gap:28px}.case-intro h3{font-size:26px;margin-bottom:14px}.case-intro p{font-size:13px}.case-gallery{grid-template-columns:1fr;margin-top:26px}.case-gallery figure{min-height:300px}.case-carousel{padding-bottom:50px}.case-carousel figure{height:355px;min-height:0}.script-carousel figure{height:390px}.academic-carousel figure{height:270px}.carousel-bar{height:50px;padding-left:12px}.carousel-actions button{width:40px;height:40px}.pending{grid-template-columns:1fr}.pending-side{border-left:0;border-top:1px solid var(--line)}.copy-layout{margin-top:34px;gap:28px}.copy-card{min-height:390px}.subpage-nav{gap:5px;margin-bottom:26px}.subpage-nav a{padding:6px 8px;font-size:8px}.page-kicker .chapter-title{margin-bottom:10px}.framework-note{grid-template-columns:1fr;gap:7px}.specimen{min-height:340px}.design-page .page-kicker{margin-bottom:32px}.design-feature{gap:28px}.design-copy h3{font-size:26px;margin-bottom:14px}.design-copy p{font-size:13px}.design-showcase{grid-template-columns:1fr}.design-showcase figure,.design-placeholder{min-height:330px}.editorial-showcase{grid-template-columns:1fr}.editorial-showcase figure{height:500px;min-height:0}.design-wall{grid-template-columns:1fr;grid-template-rows:380px repeat(4,260px)}.design-wall figure:first-child{grid-column:auto}.design-skills{grid-template-columns:1fr 1fr}.shoot-grid{grid-template-columns:1fr;margin-top:34px}.shoot-grid figure,.shoot-grid figure:nth-child(2),.shoot-grid figure:nth-child(3){grid-column:auto;height:420px;margin:0}.shoot-grid figure:nth-child(2){height:450px}.prototype{margin-top:34px}.prototype figure{min-height:300px}.contact-strip{margin-top:52px;gap:24px}.contact-links{font-size:12px}
-    }
-    @media(max-width:380px){
-      .chapter{padding-left:16px;padding-right:16px}.cover-foot{left:16px;right:16px}.cover .display{font-size:40px}.rail nav{gap:2px}.rail a{width:28px;height:28px}.stat b{font-size:24px}
-    }
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
-  </style>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f2efe8">
+<title>张国明｜新媒体与内容运营作品集</title>
+<style>
+:root{--paper:#f2efe8;--surface:#e8e2d7;--ink:#171715;--muted:#77736b;--line:#c9c3b8;--clay:#b96f55;--olive:#7d8460;--serif:Georgia,"Songti SC","STSong",serif;--sans:Arial,"PingFang SC","Microsoft YaHei",sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.7 var(--sans);overflow-x:hidden}body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.03;background:url("p01-09a7221e.jpg") center/900px;z-index:10}a{color:inherit}img{display:block;max-width:100%}.wrap{max-width:1480px;margin:auto;padding:22px 5vw 70px}.top{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--ink);padding:10px 0 16px;font-size:11px;letter-spacing:.16em;text-transform:uppercase}.top nav{display:flex;gap:26px}.top a{text-decoration:none}.hero{min-height:calc(100vh - 65px);display:grid;grid-template-columns:1fr .9fr;gap:8vw;align-items:center;border-bottom:1px solid var(--ink)}.kicker,.label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}h1{font:400 clamp(64px,10vw,150px)/.86 var(--serif);letter-spacing:-.085em;margin:28px 0 36px}p{max-width:470px;color:var(--muted);font-size:14px}.meta{display:flex;gap:34px;margin-top:48px;font-size:11px;letter-spacing:.12em;text-transform:uppercase}.meta span{display:block;color:var(--muted);margin-bottom:6px}.hero-art{min-height:550px;position:relative}.shape{position:absolute}.s1{inset:7% 12% 8% 8%;background:linear-gradient(145deg,#cfc5b5,#f3eee4 52%,#9ca686);transform:rotate(-5deg)}.s2{inset:20% 5% 17% 28%;background:linear-gradient(160deg,#a9634f,#d4ac89 55%,#777d5d);transform:rotate(9deg);mix-blend-mode:multiply}.s3{inset:34% 25% 29% 18%;border:1px solid var(--paper);transform:rotate(-18deg)}.art-note{position:absolute;right:2%;bottom:2%;font:italic 17px var(--serif);color:var(--muted)}section{padding:110px 0;border-bottom:1px solid var(--ink)}.head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:42px}.head h2{font:400 clamp(36px,5vw,70px)/1 var(--serif);letter-spacing:-.06em;margin:0}.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}.card{position:relative;min-height:390px;overflow:hidden;background:var(--surface);padding:20px;display:flex;flex-direction:column;justify-content:space-between}.card:nth-child(1){grid-column:span 7}.card:nth-child(2){grid-column:span 5;min-height:500px}.card:nth-child(3){grid-column:span 5}.card:nth-child(4){grid-column:span 7}.card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.8)}.card:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,15,13,.08),rgba(15,15,13,.7))}.card-top,.card-bottom{position:relative;z-index:1;display:flex;justify-content:space-between;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#fff}.card-bottom strong{font:400 27px var(--serif);letter-spacing:-.04em;text-transform:none}.card-bottom span{align-self:end;color:rgba(255,255,255,.75)}.about{display:grid;grid-template-columns:1fr 1fr;gap:10vw}.about-big{font:400 clamp(32px,4vw,58px)/1.08 var(--serif);letter-spacing:-.055em}.about-side{color:var(--muted);font-size:14px}.row{border-top:1px solid var(--line);padding:13px 0;display:flex;justify-content:space-between;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink)}.gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.gallery figure{margin:0;background:var(--surface);cursor:zoom-in}.gallery img{width:100%;aspect-ratio:4/5;object-fit:cover;filter:saturate(.82);transition:transform .35s,filter .35s}.gallery figure:hover img{transform:scale(1.025);filter:saturate(1)}.gallery figcaption{padding:10px 12px;font-size:10px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}.contact{display:flex;justify-content:space-between;align-items:end;gap:28px}.contact h2{font:400 clamp(52px,9vw,130px)/.86 var(--serif);letter-spacing:-.09em;margin:0}.contact a{font-size:12px;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:6px}.lightbox{position:fixed;inset:0;background:rgba(18,17,15,.92);display:none;place-items:center;z-index:30;padding:6vw}.lightbox.open{display:grid}.lightbox img{max-width:min(90vw,1100px);max-height:86vh;object-fit:contain}.close{position:absolute;top:24px;right:30px;color:#fff;background:none;border:0;font-size:30px;cursor:pointer}footer{display:flex;justify-content:space-between;padding-top:22px;color:var(--muted);font-size:10px;letter-spacing:.12em;text-transform:uppercase}
+@media(max-width:760px){.wrap{padding:16px 20px 50px}.top nav{display:none}.hero{grid-template-columns:1fr;min-height:auto;padding:90px 0 70px;gap:34px}h1{font-size:clamp(70px,22vw,130px)}.hero-art{min-height:350px}section{padding:76px 0}.head{display:block}.head .label{margin-top:12px}.grid{display:block}.card,.card:nth-child(2){min-height:330px;margin-bottom:14px}.about{grid-template-columns:1fr;gap:42px}.gallery{grid-template-columns:repeat(2,1fr);gap:10px}.contact{display:block}.contact a{display:inline-block;margin-top:36px}footer{display:block}footer span{display:block;margin-top:10px}}
+</style>
 </head>
-<body>
-<a class="skip" href="#about">跳至正文</a><div class="progress" aria-hidden="true"></div>
-<aside class="rail" aria-label="作品集章节导航">
-  <span class="rail-mark">PORTFOLIO</span>
-  <nav>
-    <a href="#cover" data-no="01" aria-label="首页封面">封面</a><a href="#about" data-no="02" aria-label="个人简介">简介</a><a href="#experience" data-no="03" aria-label="工作经历">经历</a><a href="#platform-wechat" data-no="04" aria-label="平台运营">平台</a><a href="#copy-script" data-no="05" aria-label="文案策划">文案</a><a href="#design-layout" data-no="06" aria-label="设计能力">设计</a><a href="#shooting" data-no="07" aria-label="拍摄展示">拍摄</a><a href="#ai" data-no="08" aria-label="AI能力">AI</a>
-  </nav>
-  <span class="rail-year">2026 · NANJING</span>
-</aside>
+<body><div class="wrap">
+<header class="top"><span>YMM / Portfolio 2025</span><nav><a href="#work">Selected Work</a><a href="#about">About</a><a href="#contact">Contact</a></nav><span>Scroll ↘</span></header>
 <main>
-  <section class="chapter cover" id="cover" data-section="01">
-    <span class="chapter-no">01 / 08</span>
-    <div class="cover-copy">
-      <p class="eyebrow">Zhang Guoming · Selected Work 2026</p>
-      <h1 class="display"><small>NEW MEDIA / CONTENT / GROWTH</small>让内容，<br>成为<em>增长</em><br>的入口。</h1>
-    </div>
-    <aside class="cover-card"><strong>张国明</strong><span>新媒体 · 内容 · 用户运营</span><span>视觉传达设计本科｜南京</span></aside>
-    <div class="cover-foot"><span>CONTENT STRATEGY · PLATFORM OPERATION · VISUAL DESIGN · AI WORKFLOW</span><span>SCROLL ↓</span></div>
-  </section>
-
-  <section class="chapter" id="about" data-section="02">
-    <span class="chapter-no">02 / 08</span>
-    <div class="about-layout">
-      <div class="monogram" aria-label="张国明个人视觉卡片"><span>ABOUT / PROFILE<br>ZHANG GUOMING</span><span>NANJING · CHINA<br>OPEN TO WORK</span></div>
-      <div>
-        <p class="eyebrow">About me / 个人简介</p>
-        <p class="about-quote">我把复杂信息转化为易理解、可传播、可转化的内容，并用视觉、数据与 AI 把它推向更远。</p>
-        <p class="lede">拥有科技、财经与消费领域的新媒体运营经验，能够独立完成热点追踪、选题策划、原创采写、视觉呈现与数据复盘，并以 SEO、私域承接和 AI 工作流打通“内容—引流—留存—线索”闭环。</p>
-        <div class="rule"></div>
-        <dl class="profile">
-          <div><dt>求职方向</dt><dd>新媒体运营 / 内容运营 / 用户运营</dd></div>
-          <div><dt>教育背景</dt><dd>本科 · 视觉传达设计</dd></div>
-          <div><dt>所在地</dt><dd>南京</dd></div>
-          <div><dt>能力关键词</dt><dd>爆款内容 · 矩阵 SEO · 私域运营 · 视觉表达 · AI 工作流</dd></div>
-          <div><dt>常用工具</dt><dd>Photoshop · Canva · 剪映 · Claude · Gemini · Coze</dd></div>
-          <div><dt>联系电话</dt><dd><a href="tel:+8617621222153">176 2122 2153</a></dd></div>
-          <div><dt>电子邮箱</dt><dd><a href="mailto:ugenlu@163.com">ugenlu@163.com</a></dd></div>
-        </dl>
-      </div>
-    </div>
-  </section>
-
-  <section class="chapter" id="experience" data-section="03">
-    <span class="chapter-no">03 / 08</span>
-    <div class="experience-head">
-      <div><p class="eyebrow">Experience / 工作经历</p><h2 class="headline">把经历写成<br>可以被验证的结果。</h2></div>
-      <p class="experience-note">两段企业经历与两项独立账号实践，覆盖内容生产、矩阵分发、用户增长、商业合作与 AI 提效。</p>
-    </div>
-    <div class="timeline">
-      <article><span class="index">01</span><div><h3>南京链析科技有限公司<small>新媒体运营专员 · 2025/03—2026/05</small></h3></div><div><p>独立负责公众号、小红书、Twitter 等多平台矩阵，结合 Arkham、Etherscan 输出黑客事件复盘、威胁情报与安全研判；通过矩阵 SEO 与公转私 SOP 沉淀 1,200+ 用户，承接资产被盗咨询 150 余起并转化高价值商业线索 10 余条。</p><div class="outcomes"><div><b>100万+</b><span>矩阵累计曝光</span></div><div><b>500万+</b><span>短视频累计播放</span></div><div><b>1,200+</b><span>高净值私域用户</span></div></div></div></article>
-      <article><span class="index">02</span><div><h3>江苏二八文化传媒有限公司<small>运营助理 · 2022/03—2022/09</small></h3></div><div><p>负责品牌微信公众号的选题、原创撰写、视觉排版与推送维护，并参与抖音、视频号的热点捕获、脚本创作、粗剪与日更；持续拆解行业热点及竞品内容。</p><div class="outcomes"><div><b>30+篇</b><span>原创公众号图文</span></div><div><b>20+</b><span>持续监控竞品账号</span></div><div><b>稳定日更</b><span>短视频运营节奏</span></div></div></div></article>
-      <article><span class="index">03</span><div><h3>穿搭垂类小红书<small>账号运营者 · 2024/10 起</small></h3></div><div><p>从 0 到 1 完成账号定位、内容策划、摄影修图与文案撰写，并承接商业种草需求、定制脚本与场景植入。</p><div class="outcomes"><div><b>160+篇</b><span>累计发布笔记</span></div><div><b>20万+</b><span>累计赞藏评</span></div><div><b>10万+元</b><span>商业合作收入</span></div></div></div></article>
-      <article><span class="index">04</span><div><h3>Chas00 加密实验室<small>公众号账号负责人 · 2025/06 起</small></h3></div><div><p>依托热点敏感度持续产出垂直深度内容，完成冷启动增长，并沉淀高粘性精准读者社群。</p><div class="outcomes"><div><b>1个月</b><span>账号完成千粉</span></div><div><b>30万+</b><span>总浏览量</span></div><div><b>2万+</b><span>赞藏评总量</span></div></div></div></article>
-    </div>
-  </section>
-
-  <section class="chapter platform platform-page subpage" id="platform-wechat" data-section="04" data-nav="#platform-wechat">
-    <span class="chapter-no">04.01 / 08</span>
-    <nav class="subpage-nav" aria-label="平台运营细分页"><a href="#platform-wechat" aria-current="page">公众号运营</a><a href="#platform-xhs">小红书</a><a href="#platform-video">视频号</a></nav>
-    <div class="page-kicker"><div><p class="eyebrow">04 / Platform operation · 01</p><p class="chapter-title">平台运营</p><h2 class="headline">公众号运营</h2><p class="lede">从专业深度到大众传播：用研究型内容建立信任，再以热点响应、搜索优化与视觉编排延长内容生命周期。</p></div><span class="page-count" aria-hidden="true">01</span></div>
-    <div class="case-grid"><div class="case-intro"><h3>把复杂信息，写成可读的内容产品</h3><p>结合 Arkham、Etherscan 等链上工具，输出黑客事件复盘、威胁情报与安全研判；同时独立运营 Chas00 加密实验室公众号，完成选题、写作、排版与用户沉淀。</p><div class="pill-row" style="margin-top:24px"><span class="pill">热点追踪</span><span class="pill">深度原创</span><span class="pill">搜索 SEO</span><span class="pill">用户沉淀</span></div></div><div class="stats"><div class="stat"><b>100万+</b><span>多平台矩阵累计曝光</span></div><div class="stat"><b>6.5万+</b><span>单篇深度文章最高阅读</span></div><div class="stat"><b>10×</b><span>自然搜索流量提升</span></div><div class="stat"><b>30万+</b><span>Chas00 公众号总浏览</span></div></div></div>
-    <div class="case-gallery carousel-grid">
-      <div class="case-carousel" data-carousel aria-label="链析科技公众号案例轮播" tabindex="0">
-        <figure class="active contain" data-title="深度文章案例 01"><img data-src="p02-3c60fbba.jpg" alt="链析科技公众号深度文章案例一" loading="lazy" decoding="async" fetchpriority="low"><figcaption>链析科技 · 深度文章案例 01</figcaption></figure>
-        <figure class="contain" data-title="深度文章案例 02"><img data-src="p03-4ea86023.jpg" alt="链析科技公众号深度文章案例二" loading="lazy" decoding="async" fetchpriority="low"><figcaption>链析科技 · 深度文章案例 02</figcaption></figure>
-        <figure class="contain" data-title="深度文章案例 03"><img data-src="p04-02234972.jpg" alt="链析科技公众号深度文章案例三" loading="lazy" decoding="async" fetchpriority="low"><figcaption>链析科技 · 深度文章案例 03</figcaption></figure>
-        <figure class="contain" data-title="深度文章案例 04"><img data-src="p05-17bab873.jpg" alt="链析科技公众号深度文章案例四" loading="lazy" decoding="async" fetchpriority="low"><figcaption>链析科技 · 深度文章案例 04</figcaption></figure>
-        <figure class="contain" data-title="深度文章案例 05"><img data-src="p06-7e5c4009.jpg" alt="链析科技公众号深度文章案例五" loading="lazy" decoding="async" fetchpriority="low"><figcaption>链析科技 · 深度文章案例 05</figcaption></figure>
-        <figure class="contain" data-title="深度文章案例 06"><img data-src="p07-2c6b521e.jpg" alt="链析科技公众号深度文章案例六" loading="lazy" decoding="async" fetchpriority="low"><figcaption>链析科技 · 深度文章案例 06</figcaption></figure>
-        <div class="carousel-bar"><div class="carousel-meta"><span class="carousel-title">深度文章案例 01</span><span class="carousel-count" aria-live="polite">01 / 06</span></div><div class="carousel-actions"><button type="button" data-prev aria-label="上一张链析科技案例">←</button><button type="button" data-next aria-label="下一张链析科技案例">→</button></div></div>
-      </div>
-      <div class="case-carousel metrics-carousel" data-carousel aria-label="Web3 Chas00公众号内容表现轮播" tabindex="0">
-        <figure class="active contain" data-title="内容表现总览"><img data-src="p08-a22a222e.jpg" alt="Web3 Chas00公众号九篇内容表现数据拼图" loading="lazy" decoding="async" fetchpriority="low"><figcaption>Web3.Chas00 · 9 篇内容表现总览</figcaption></figure>
-        <figure class="contain" data-title="内容表现 01—05"><img data-src="p09-662b8a68.jpg" alt="Web3 Chas00公众号前五篇内容表现数据拼图" loading="lazy" decoding="async" fetchpriority="low"><figcaption>Web3.Chas00 · 内容表现 01—05</figcaption></figure>
-        <figure class="contain" data-title="内容表现 06—09"><img data-src="p10-771d2cea.jpg" alt="Web3 Chas00公众号后四篇内容表现数据拼图" loading="lazy" decoding="async" fetchpriority="low"><figcaption>Web3.Chas00 · 内容表现 06—09</figcaption></figure>
-        <div class="carousel-bar"><div class="carousel-meta"><span class="carousel-title">内容表现总览</span><span class="carousel-count" aria-live="polite">01 / 03</span></div><div class="carousel-actions"><button type="button" data-prev aria-label="上一张Chas00案例">←</button><button type="button" data-next aria-label="下一张Chas00案例">→</button></div></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="chapter platform platform-page subpage" id="platform-xhs" data-section="04" data-nav="#platform-wechat">
-    <span class="chapter-no">04.02 / 08</span>
-    <nav class="subpage-nav" aria-label="平台运营细分页"><a href="#platform-wechat">公众号运营</a><a href="#platform-xhs" aria-current="page">小红书</a><a href="#platform-video">视频号</a></nav>
-    <div class="page-kicker"><div><p class="eyebrow">04 / Platform operation · 02</p><p class="chapter-title">平台运营</p><h2 class="headline">小红书运营</h2><p class="lede">从 0 到 1 搭建穿搭垂类账号，以稳定画面语言建立辨识度，并围绕搜索与推荐权重持续优化选题、文案和发布节奏。</p></div><span class="page-count" aria-hidden="true">02</span></div>
-    <div class="case-grid"><div class="case-intro"><h3>让风格先被认出，再让内容被记住</h3><p>独立完成账号定位、内容策划、摄影修图、文案撰写、数据复盘与商务接洽；针对品牌需求拆解商业种草目标，定制脚本与场景植入。</p><div class="pill-row" style="margin-top:24px"><span class="pill">账号定位</span><span class="pill">搜索推荐</span><span class="pill">爆款复盘</span><span class="pill">商业种草</span></div></div><div class="stats"><div class="stat"><b>160+篇</b><span>累计发布笔记</span></div><div class="stat"><b>100+篇</b><span>曝光破万笔记</span></div><div class="stat"><b>20万+</b><span>累计赞藏评</span></div><div class="stat"><b>10万+元</b><span>商业合作收入</span></div></div></div>
-    <div class="case-gallery"><figure><img data-src="p11-e9fe1572.jpg" alt="姜律师 Web3 法律科普小红书账号主页与代表笔记" loading="lazy" decoding="async" fetchpriority="low"><figcaption>姜律师 · Web3 法律科普账号</figcaption></figure><figure><img data-src="p12-9fdcb36d.jpg" alt="穿搭垂类小红书账号笔记流与互动数据" loading="lazy" decoding="async" fetchpriority="low"><figcaption>穿搭账号 · 笔记作品与互动表现</figcaption></figure></div>
-  </section>
-
-  <section class="chapter platform platform-page subpage" id="platform-video" data-section="04" data-nav="#platform-wechat">
-    <span class="chapter-no">04.03 / 08</span>
-    <nav class="subpage-nav" aria-label="平台运营细分页"><a href="#platform-wechat">公众号运营</a><a href="#platform-xhs">小红书</a><a href="#platform-video" aria-current="page">视频号</a></nav>
-    <div class="page-kicker"><div><p class="eyebrow">04 / Platform operation · 03</p><p class="chapter-title">平台运营</p><h2 class="headline">视频号运营</h2><p class="lede">从热点捕获、脚本创作到视频粗剪与发布复盘，围绕前 3 秒抓手、封面标题和镜头节奏持续优化内容表现。</p></div><span class="page-count" aria-hidden="true">03</span></div>
-    <div class="case-grid"><div class="case-intro"><h3>用脚本与分镜，<br>把专业内容讲清楚</h3><p>在链析科技负责视频号内容策划与分镜脚本，主导把控视觉分镜和剪辑质感；在二八文化传媒参与视频号日更与数据追踪。</p><div class="pill-row" style="margin-top:24px"><span class="pill">热点捕获</span><span class="pill">分镜脚本</span><span class="pill">视频粗剪</span><span class="pill">数据复盘</span></div></div><div class="stats"><div class="stat"><b>120+条</b><span>短视频脚本累计输出</span></div><div class="stat"><b>500万+</b><span>视频号 / 抖音累计播放</span></div><div class="stat"><b>稳定日更</b><span>二八传媒运营周期</span></div><div class="stat"><b>前3秒</b><span>重点优化内容抓手</span></div></div></div>
-    <div class="case-gallery video-gallery"><figure class="contain"><img data-src="p13-1be252d7.jpg" alt="王宇微律师视频号主页与视频作品" loading="lazy" decoding="async" fetchpriority="low"><figcaption>王宇微律师 · 专业法律内容账号</figcaption></figure><figure class="contain"><img data-src="p14-ca38bea3.jpg" alt="区块链威胁情报实验室视频号主页与视频作品" loading="lazy" decoding="async" fetchpriority="low"><figcaption>链析科技 · 区块链威胁情报实验室</figcaption></figure></div>
-  </section>
-
-  <section class="chapter copy-page subpage" id="copy-script" data-section="05" data-nav="#copy-script">
-    <span class="chapter-no">05.01 / 08</span>
-    <nav class="subpage-nav" aria-label="文案策划细分页"><a href="#copy-script" aria-current="page">脚本撰写</a><a href="#copy-academic">学术文稿</a></nav>
-    <div class="page-kicker"><div><p class="eyebrow">05 / Copywriting · 01</p><p class="chapter-title">文案策划</p><h2 class="headline">脚本撰写</h2><p class="lede">累计输出短视频脚本 120+ 条，覆盖科技安全、品牌内容与专业律师合作号；用开场抓手建立期待，以分镜和节奏完成叙事。</p></div><span class="page-count" aria-hidden="true">01</span></div>
-    <div class="copy-layout"><div class="copy-steps"><article><span>01</span><div><h3>受众与传播目标</h3><p>明确谁会看、为何停留、希望产生什么行动。</p></div></article><article><span>02</span><div><h3>前 3 秒黄金抓手</h3><p>把核心冲突与价值信息前置，建立观看期待。</p></div></article><article><span>03</span><div><h3>信息节奏与口语化</h3><p>拆分句式、控制密度，兼顾理解与记忆。</p></div></article><article><span>04</span><div><h3>分镜与剪辑衔接</h3><p>写明镜头、画面与节奏提示，保证脚本可直接执行。</p></div></article></div><div class="case-carousel script-carousel" data-carousel aria-label="王宇微律师短视频脚本案例轮播" tabindex="0"><figure class="active" data-title="找朋友还是找平台？"><img data-src="p15-2d661f71.png" alt="短视频脚本案例：比特币变现找朋友还是找平台" loading="lazy" decoding="async" fetchpriority="low"><figcaption>王宇微律师 · 脚本案例 01</figcaption></figure><figure data-title="币圈惊天骗局"><img data-src="p16-2046896e.png" alt="短视频脚本案例：币圈骗局与平台盗币" loading="lazy" decoding="async" fetchpriority="low"><figcaption>王宇微律师 · 脚本案例 02</figcaption></figure><figure data-title="混币洗钱案"><img data-src="p17-e2e585dd.png" alt="短视频脚本案例：混币洗钱案件解读" loading="lazy" decoding="async" fetchpriority="low"><figcaption>王宇微律师 · 脚本案例 03</figcaption></figure><figure data-title="投资虚拟货币违法吗？"><img data-src="p18-d8538e1c.png" alt="短视频脚本案例：投资虚拟货币是否违法" loading="lazy" decoding="async" fetchpriority="low"><figcaption>王宇微律师 · 脚本案例 04</figcaption></figure><figure data-title="被骗后起诉还是报案？"><img data-src="p19-695513ac.png" alt="短视频脚本案例：被骗后起诉还是报案" loading="lazy" decoding="async" fetchpriority="low"><figcaption>王宇微律师 · 脚本案例 05</figcaption></figure><div class="carousel-bar"><div class="carousel-meta"><span class="carousel-title">找朋友还是找平台？</span><span class="carousel-count" aria-live="polite">01 / 05</span></div><div class="carousel-actions"><button type="button" data-prev aria-label="上一张脚本案例">←</button><button type="button" data-next aria-label="下一张脚本案例">→</button></div></div></div></div>
-  </section>
-
-  <section class="chapter copy-page subpage" id="copy-academic" data-section="05" data-nav="#copy-script">
-    <span class="chapter-no">05.02 / 08</span>
-    <nav class="subpage-nav" aria-label="文案策划细分页"><a href="#copy-script">脚本撰写</a><a href="#copy-academic" aria-current="page">学术文稿</a></nav>
-    <div class="page-kicker"><div><p class="eyebrow">05 / Copywriting · 02</p><p class="chapter-title">文案策划</p><h2 class="headline">学术文稿</h2><p class="lede">面向论证场景处理复杂问题：明确概念边界，组织证据与反证，并保持严谨、清晰的叙述。</p></div><span class="page-count" aria-hidden="true">02</span></div>
-    <div class="copy-layout"><div class="copy-steps"><article><span>01</span><div><h3>问题定义</h3><p>确定研究对象、范围与关键问题。</p></div></article><article><span>02</span><div><h3>资料梳理</h3><p>区分事实、观点与假设，建立可靠材料库。</p></div></article><article><span>03</span><div><h3>论证结构</h3><p>用论点、证据与反证形成完整链条。</p></div></article><article><span>04</span><div><h3>引用与校对</h3><p>统一规范，检查措辞、逻辑与文本一致性。</p></div></article></div><div class="case-carousel academic-carousel" data-carousel aria-label="学术文稿案例轮播" tabindex="0"><figure class="active" data-title="论文案例 01"><img data-src="p20-dee34b6b.jpg" alt="学术论文案例一的多页文稿总览" loading="lazy" decoding="async" fetchpriority="low"><figcaption>学术文稿 · 论文案例 01</figcaption></figure><figure data-title="论文案例 02"><img data-src="p21-78afed88.jpg" alt="学术论文案例二的多页文稿总览" loading="lazy" decoding="async" fetchpriority="low"><figcaption>学术文稿 · 论文案例 02</figcaption></figure><figure data-title="论文案例 03"><img data-src="p22-2905c32c.jpg" alt="学术论文案例三的多页文稿总览" loading="lazy" decoding="async" fetchpriority="low"><figcaption>学术文稿 · 论文案例 03</figcaption></figure><div class="carousel-bar"><div class="carousel-meta"><span class="carousel-title">论文案例 01</span><span class="carousel-count" aria-live="polite">01 / 03</span></div><div class="carousel-actions"><button type="button" data-prev aria-label="上一张学术文稿案例">←</button><button type="button" data-next aria-label="下一张学术文稿案例">→</button></div></div></div></div>
-  </section>
-
-
-  <section class="chapter design-page subpage" id="design-layout" data-section="06" data-nav="#design-layout">
-    <span class="chapter-no">06.01 / 08</span>
-    <nav class="subpage-nav" aria-label="设计能力细分页"><a href="#design-layout" aria-current="page">图文排版</a><a href="#design-data">信息可视化</a><a href="#design-web">网页原型</a></nav>
-    <div class="page-kicker"><div><p class="eyebrow">06 / Visual design · 01</p><p class="chapter-title">设计能力</p><h2 class="headline">图文排版</h2><p class="lede">用层级、留白与阅读节奏，把长内容组织成清晰、连贯且可传播的信息版面。</p></div><span class="page-count" aria-hidden="true">01</span></div>
-    <div class="design-feature"><div class="design-copy"><h3>让信息先被看懂，<br>再被记住。</h3><p>以三组完整长图文呈现不同主题下的信息编排、图像节奏与移动端阅读体验。</p><ul><li>信息层级与阅读动线</li><li>标题、正文与图注系统</li><li>移动端长图与多尺寸适配</li></ul></div><div class="design-showcase editorial-showcase"><figure><img data-src="p23-581236af.jpg" alt="音乐活动主题长图文排版作品" loading="lazy" decoding="async" fetchpriority="low"><figcaption>活动专题 · 长图文排版</figcaption></figure><figure><img data-src="p24-9f10d52f.jpg" alt="旅行与美食主题长图文排版作品" loading="lazy" decoding="async" fetchpriority="low"><figcaption>生活方式 · 图文编排</figcaption></figure><figure><img data-src="p25-a3ecb4f0.jpg" alt="城市文化主题长图文排版作品" loading="lazy" decoding="async" fetchpriority="low"><figcaption>城市文化 · 长图叙事</figcaption></figure></div></div>
-  </section>
-
-  <section class="chapter design-page subpage" id="design-data" data-section="06" data-nav="#design-layout">
-    <span class="chapter-no">06.02 / 08</span>
-    <nav class="subpage-nav" aria-label="设计能力细分页"><a href="#design-layout">图文排版</a><a href="#design-data" aria-current="page">信息可视化</a><a href="#design-web">网页原型</a></nav>
-    <div class="page-kicker"><div><p class="eyebrow">06 / Visual design · 02</p><p class="chapter-title">设计能力</p><h2 class="headline">信息可视化</h2><p class="lede">把抽象关系、复杂过程与关键数据转译为更容易扫描、比较和理解的视觉结构。</p></div><span class="page-count" aria-hidden="true">02</span></div>
-    <div class="design-feature"><div class="design-copy"><h3>从信息密度中，<br>找出阅读秩序。</h3><p>独立页面可呈现原始信息、结构草图、视觉成稿与前后对照，让设计过程可被理解。</p><ul><li>数据选择与比较关系</li><li>图表、卡片与注释系统</li><li>复杂内容的视觉降噪</li></ul></div><div class="design-showcase one"><figure><img data-src="p26-ce58f28d.jpg" alt="财经公众号信息可视化长图" loading="lazy" decoding="async" fetchpriority="low"><figcaption>财经内容 · 信息可视化</figcaption></figure></div></div>
-  </section>
-
-  <section class="chapter design-page subpage" id="design-web" data-section="06" data-nav="#design-layout">
-    <span class="chapter-no">06.03 / 08</span>
-    <nav class="subpage-nav" aria-label="设计能力细分页"><a href="#design-layout">图文排版</a><a href="#design-data">信息可视化</a><a href="#design-web" aria-current="page">网页原型</a></nav>
-    <div class="page-kicker"><div><p class="eyebrow">06 / Visual design · 03</p><p class="chapter-title">设计能力</p><h2 class="headline">网页原型</h2><p class="lede">从内容结构出发，完成信息架构、界面视觉与响应式原型，让复杂主题形成可浏览的产品表达。</p></div><span class="page-count" aria-hidden="true">03</span></div>
-    <div class="design-feature reverse"><div class="design-showcase one"><figure class="contain"><img data-src="p27-4c129f0e.jpg" alt="DeFi 安全情报网站界面设计" loading="lazy" decoding="async" fetchpriority="low"><figcaption>DeFi 安全情报网站 · 界面原型</figcaption></figure></div><div class="design-copy"><h3>让内容拥有，<br>可使用的界面。</h3><p>以后续 DeFi 安全情报网站为核心案例，展开需求拆解、架构、界面与迭代；AI 章节再说明工具协作流程。</p><ul><li>信息架构与用户任务</li><li>界面规范与组件系统</li><li>响应式布局与交互验证</li></ul></div></div>
-  </section>
-
-  <section class="chapter shooting" id="shooting" data-section="07">
-    <span class="chapter-no">07 / 08</span>
-    <div class="shoot-head"><div><p class="eyebrow">Photography / 拍摄展示</p><h2 class="headline">真实场景，<br>就是最好的布景。</h2></div><p class="lede">围绕穿搭与人物内容，利用自然光、环境色与人物动作建立氛围；画面不仅服务审美，也服务账号长期辨识度。</p></div>
-    <div class="shoot-grid"><figure><img data-src="p28-f8e2acac.jpg" alt="雨天街头黑色穿搭人物拍摄" loading="lazy" decoding="async" fetchpriority="low"><figcaption>街头 / 雨天 / 低饱和</figcaption></figure><figure><img data-src="p29-f52e1e29.jpg" alt="卷发人物穿搭与生活场景拍摄" loading="lazy" decoding="async" fetchpriority="low"><figcaption>人物 / 生活场景 / 造型</figcaption></figure><figure><img data-src="p30-0a3f6426.jpg" alt="麻瓜环球日记主题人物拍摄" loading="lazy" decoding="async" fetchpriority="low"><figcaption>主题造型 / 叙事氛围</figcaption></figure></div>
-    <p class="shoot-note">当前以已发布内容截图呈现。正式版可补充原始高清照片，并按「人像 / 穿搭 / 场景」重组为独立摄影序列。</p>
-  </section>
-
-  <section class="chapter ai" id="ai" data-section="08">
-    <span class="chapter-no">08 / 08</span>
-    <div class="ai-head"><div><p class="eyebrow">AI workflow / AI 能力</p><h2 class="headline">把 AI 放进流程，<br>而不是放进标题。</h2></div><p class="lede">熟练运用 Claude、Gemini 与 Coze，把热点抓取、内容改写、Prompt 模板和跨平台分发连接成可落地的工作流，降低重复劳动与试错成本。</p></div>
-    <div class="prototype"><figure><img data-src="p27-4c129f0e.jpg" alt="AI 协作完成的 DeFi 安全情报网站原型" loading="lazy" decoding="async" fetchpriority="low"></figure><div class="ai-flow"><article><span>01</span><div><h3>热点与素材抓取</h3><p>将分散信息汇入统一流程，减少重复搜索与整理。</p></div></article><article><span>02</span><div><h3>Prompt 模板库</h3><p>固化不同平台的语气、结构与校验要求，压缩内容周期。</p></div></article><article><span>03</span><div><h3>Coze 自动化分发</h3><p>单篇图文多渠道同步由 45 分钟缩短至 5 分钟内。</p></div></article><article><span>04</span><div><h3>人工复核与迭代</h3><p>保留事实、表达与视觉质量把关，再根据反馈持续优化。</p></div></article></div></div>
-    <div class="contact-strip"><h2>期待与你一起，<br>把内容做成增长。</h2><div class="contact-links"><a href="tel:+8617621222153">176 2122 2153</a><a href="mailto:ugenlu@163.com">ugenlu@163.com</a><span>南京</span></div></div>
-  </section>
-</main>
-<div class="lightbox" role="dialog" aria-modal="true" aria-label="作品图片预览"><button type="button" aria-label="关闭图片预览">×</button><p>IMAGE PREVIEW</p><img alt=""></div>
-<script>
-(function(){
-  var deferredImages=[].slice.call(document.querySelectorAll('img[data-src]'));
-  function loadImage(img){
-    if(!img||!img.dataset.src)return;
-    img.src=img.dataset.src;
-    img.removeAttribute('data-src');
-  }
-  if('IntersectionObserver' in window){
-    var imageObserver=new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){if(entry.isIntersecting){loadImage(entry.target);imageObserver.unobserve(entry.target)}});
-    },{rootMargin:'800px 0px'});
-    deferredImages.forEach(function(img){imageObserver.observe(img)});
-  }else{
-    deferredImages.forEach(loadImage);
-  }
-  var navLinks=[].slice.call(document.querySelectorAll('.rail nav a'));
-  var sections=[].slice.call(document.querySelectorAll('.chapter'));
-  var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting){var target=entry.target.getAttribute('data-nav')||'#'+entry.target.id;navLinks.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')===target)})}})},{rootMargin:'-38% 0px -54% 0px'});
-  sections.forEach(function(section){observer.observe(section)});
-  var bar=document.querySelector('.progress');
-  function progress(){var max=document.documentElement.scrollHeight-window.innerHeight;bar.style.height=(max>0?window.scrollY/max*100:0)+'%'}
-  window.addEventListener('scroll',progress,{passive:true});progress();
-  var tabs=[].slice.call(document.querySelectorAll('[role="tab"]'));
-  tabs.forEach(function(tab){tab.addEventListener('click',function(){tabs.forEach(function(t){var on=t===tab;t.setAttribute('aria-selected',String(on));var panel=document.getElementById(t.getAttribute('aria-controls'));panel.hidden=!on;panel.classList.toggle('active',on)})})});
-  var suppressLightboxUntil=0;
-  [].slice.call(document.querySelectorAll('[data-carousel]')).forEach(function(carousel){
-    var slides=[].slice.call(carousel.querySelectorAll('figure')),index=0;
-    var title=carousel.querySelector('.carousel-title'),count=carousel.querySelector('.carousel-count');
-    var startX=0,startY=0,tracking=false;
-    function show(next){
-      index=(next+slides.length)%slides.length;
-      slides.forEach(function(slide,i){var on=i===index;slide.classList.toggle('active',on);slide.setAttribute('aria-hidden',String(!on))});
-      title.textContent=slides[index].getAttribute('data-title')||'';
-      count.textContent=String(index+1).padStart(2,'0')+' / '+String(slides.length).padStart(2,'0');
-    }
-    function beginSwipe(x,y){startX=x;startY=y;tracking=true;carousel.classList.add('is-swiping')}
-    function endSwipe(x,y){
-      if(!tracking)return;
-      tracking=false;carousel.classList.remove('is-swiping');
-      var dx=x-startX,dy=y-startY;
-      if(Math.abs(dx)>42&&Math.abs(dx)>Math.abs(dy)*1.15){
-        suppressLightboxUntil=Date.now()+650;
-        show(index+(dx<0?1:-1));
-      }
-    }
-    carousel.querySelector('[data-prev]').addEventListener('click',function(){show(index-1)});
-    carousel.querySelector('[data-next]').addEventListener('click',function(){show(index+1)});
-    carousel.addEventListener('keydown',function(e){if(e.key==='ArrowLeft'){e.preventDefault();show(index-1)}else if(e.key==='ArrowRight'){e.preventDefault();show(index+1)}});
-    carousel.addEventListener('touchstart',function(e){if(e.touches.length===1)beginSwipe(e.touches[0].clientX,e.touches[0].clientY)},{passive:true});
-    carousel.addEventListener('touchend',function(e){if(e.changedTouches.length)endSwipe(e.changedTouches[0].clientX,e.changedTouches[0].clientY)},{passive:true});
-    carousel.addEventListener('touchcancel',function(){tracking=false;carousel.classList.remove('is-swiping')},{passive:true});
-    slides.forEach(function(slide){slide.querySelectorAll('img').forEach(function(img){img.setAttribute('draggable','false')})});
-    show(0);
-  });
-  var box=document.querySelector('.lightbox'),boxImg=box.querySelector('img'),close=box.querySelector('button');
-  document.addEventListener('click',function(e){var img=e.target.closest('main img');if(!img||Date.now()<suppressLightboxUntil)return;loadImage(img);boxImg.src=img.currentSrc||img.src;boxImg.alt=img.alt;box.classList.add('open');document.body.style.overflow='hidden';close.focus()});
-  function shut(){box.classList.remove('open');document.body.style.overflow='';boxImg.removeAttribute('src')}
-  close.addEventListener('click',shut);box.addEventListener('click',function(e){if(e.target===box)shut()});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&box.classList.contains('open'))shut()});
-})();
-</script>
-</body>
-</html>
+<section class="hero"><div><div class="kicker">Content · Art Direction · Operations</div><h1>Make<br>meaning<br>visible.</h1><p>以内容策划、视觉表达和平台运营为方法，把每一个项目整理成清晰、有温度、值得被记住的故事。</p><div class="meta"><div><span>Based in</span>Shanghai / CN</div><div><span>Available for</span>Selected projects</div></div></div><div class="hero-art" aria-hidden="true"><div class="shape s1"></div><div class="shape s2"></div><div class="shape s3"></div><div class="art-note">A study in quiet details.</div></div></section>
+<section id="work"><div class="head"><h2>Selected work</h2><div class="label">01 — 04 / Case studies</div></div><div class="grid">
+<article class="card"><img src="p01-09a7221e.jpg" alt="作品集封面"><div class="card-top"><span>01 / Platform operation</span><span>2025</span></div><div class="card-bottom"><strong>小红书账号运营</strong><span>Strategy · Content</span></div></article>
+<article class="card"><img src="p02-3c60fbba.jpg" alt="平台运营项目"><div class="card-top"><span>02 / Visual system</span><span>2024</span></div><div class="card-bottom"><strong>平台运营</strong><span>Layout · Editorial</span></div></article>
+<article class="card"><img src="p03-4ea86023.jpg" alt="数据展示项目"><div class="card-top"><span>03 / Copywriting</span><span>2024</span></div><div class="card-bottom"><strong>文案策划</strong><span>Concept · Script</span></div></article>
+<article class="card"><img src="p04-02234972.jpg" alt="公众号运营项目"><div class="card-top"><span>04 / Photography</span><span>2023</span></div><div class="card-bottom"><strong>生活方式影像</strong><span>Image · Direction</span></div></article>
+</div></section>
+<section id="about"><div class="head"><h2>About me</h2><div class="label">02 — A short introduction</div></div><div class="about"><div class="about-big">我喜欢把复杂的信息，整理成有秩序、也有情绪的视觉体验。</div><div class="about-side"><p>从内容策划到视觉落地，关注每一处细节如何共同构成一个完整的品牌印象。</p><div class="row"><span>Focus</span><span>Content / Visual / Growth</span></div><div class="row"><span>Tools</span><span>Notion / Figma / Adobe</span></div><div class="row"><span>Experience</span><span>3+ years</span></div></div></div></section>
+<section><div class="head"><h2>Archive</h2><div class="label">03 — Selected pages</div></div><div class="gallery">
+<figure><img src="p05-17bab873.jpg" alt="作品集页面 1" loading="lazy"><figcaption>Page 01 / Portfolio study</figcaption></figure>
+<figure><img src="p06-7e5c4009.jpg" alt="作品集页面 2" loading="lazy"><figcaption>Page 02 / Portfolio study</figcaption></figure>
+<figure><img src="p07-2c6b521e.jpg" alt="作品集页面 3" loading="lazy"><figcaption>Page 03 / Portfolio study</figcaption></figure>
+<figure><img src="p08-a22a222e.jpg" alt="作品集页面 4" loading="lazy"><figcaption>Page 04 / Portfolio study</figcaption></figure>
+<figure><img src="p09-662b8a68.jpg" alt="作品集页面 5" loading="lazy"><figcaption>Page 05 / Portfolio study</figcaption></figure>
+<figure><img src="p10-771d2cea.jpg" alt="作品集页面 6" loading="lazy"><figcaption>Page 06 / Portfolio study</figcaption></figure>
+<figure><img src="p11-e9fe1572.jpg" alt="作品集页面 7" loading="lazy"><figcaption>Page 07 / Portfolio study</figcaption></figure>
+<figure><img src="p12-9fdcb36d.jpg" alt="作品集页面 8" loading="lazy"><figcaption>Page 08 / Portfolio study</figcaption></figure>
+</div></section>
+<section id="contact" class="contact"><h2>Let's make<br>something<br>matter.</h2><a href="mailto:hello@example.com">Start a conversation ↗</a></section>
+</main><footer><span>© 2025 YMM Portfolio</span><span>Designed with intention</span></footer></div>
+<div class="lightbox" role="dialog" aria-modal="true" aria-label="图片预览"><button class="close" aria-label="关闭">×</button><img alt=""></div>
+<script>const box=document.querySelector(".lightbox"),view=box.querySelector("img");document.querySelectorAll(".gallery img").forEach(img=>img.addEventListener("click",()=>{view.src=img.src;view.alt=img.alt;box.classList.add("open");document.body.style.overflow="hidden"}));function shut(){box.classList.remove("open");view.removeAttribute("src");document.body.style.overflow=""}document.querySelector(".close").addEventListener("click",shut);box.addEventListener("click",e=>{if(e.target===box)shut()});document.addEventListener("keydown",e=>{if(e.key==="Escape")shut()});</script>
+</body></html>
